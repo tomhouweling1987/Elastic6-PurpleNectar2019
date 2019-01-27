@@ -25,68 +25,22 @@ bron: https://en.wikipedia.org/wiki/Boro_taxi -->
 
 Bij het plotten van de pickup(geoip) in Kibana is duidelijk terug te zien dat er op Manhattan zeer weinig pickups zijn onder de bovengenoemde straten. Aan de deelnemers van de workshop kan dan ook gevraagd worden wat ze opvalt aan de visualisatie op de kaart. Tips boven de $100, levert ook leuke resultaten op.
 
-## Elastic.co
-De installatie van de componenten elasticsearch, logstash, zijn getest op een Ubuntu 16.04 systeem waar Java al aanwezig was.
-De verwachting is dat het ook werkt op de 18.04 systeem.
+## Docker
+De Docker compose file komt van de officiele repo van Elastic. We gebruiken de laatste ELK images van de Elastic. 
 
 ### Install pre-requirements
-```
-sudo apt install openjdk-8-jre-headless
-sudo apt install haveged
-sudo apt install curl
-```
+Windows: Docker Deskstop
+Ubuntu: apt install docker-ce
+Mac: Docker desktop
 
-### Prepare the elastic.co repository
-```
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
-sudo apt update
-```
+## Dataset
+Download de dataset en plaats deze in logstash/data/
 
-### Install, enable and start elasticsearch
+## Docker Compose
+Om de ELK stack te starten open je een terminal/command prompt en daar ga je naar de directory waarin je de repo hebt gecloned. Daarna geef je het onderstaande commando:
 ```
-sudo apt install elasticsearch
-sudo systemctl enable elasticsearch.service
-systemctl start elasticsearch.service
-```
-Verify: curl -XGET localhost:9200
-
-
-### Install, enable and start kibana
-```
-sudo aptitude install kibana
-sudo systemctl enable kibana
-sudo systemctl start kibana
-```
-Verify: port http://localhost:5601 is available and shows the Kibana UI
-
-
-### Install logstash, place configuration and fill elasticsearch
-```
-sudo aptitude install logstash
-cp 01-taxi.conf /etc/logstash/conf.d/
-cp taxi-template.json /etc/logstash/conf.d/
-cp green_tripdata_2019-04.csv /tmp
-/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/01-taxi.conf
+docker-compose up -d
 ```
 
-### Apache/Nginx Proxy met basis auth
-Bestaande proxy gebruiken (?)
-htpasswd
-
-## Docker
-TODO:
-Doe bovenstaande na en verwijder logstash, is na het inlezen niet meer noodzakelijk.
-De dataset uit tmp mag/is weg.
-
-De dataset is vrij fors voor een docker image:
-```
-du -sh /var/lib/elasticsearch
-1.1G	/var/lib/elasticsearch
-```
-Een mogelijk oplossing hiervoor:
-https://www.elastic.co/blog/data-rollups-in-elasticsearch-you-know-for-saving-space
-
-Dockerfile plaatsen in deze repo.
-
-
+## Kibana
+Om de dataset in kibana te bekijken ga je naar http://localhost:5601
