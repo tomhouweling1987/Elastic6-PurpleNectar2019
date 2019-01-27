@@ -21,7 +21,7 @@ services:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/config/01-taxi.conf:/etc/logstash/conf.d/01-taxi.conf:ro
       - ./logstash/config/taxi-template.json:/tmp/taxi-template.json:ro
-      - ./logstash/data/green_tripdata_2019-04.csv:/tmp/green_tripdata_2019-04.csv
+      - ./logstash/data/green_tripdata_2019-04.csv:/tmp/green_tripdata_2019-04.csv:ro
     ports:
       - "5000:5000"
       - "9600:9600"
