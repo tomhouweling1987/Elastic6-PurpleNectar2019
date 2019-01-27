@@ -17,7 +17,6 @@ services:
   logstash:
     image: "docker.elastic.co/logstash/logstash-oss:6.5.4"
     volumes:
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/config/01-taxi.conf:/etc/logstash/conf.d/01-taxi.conf:ro
       - ./logstash/config/taxi-template.json:/tmp/taxi-template.json:ro
