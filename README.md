@@ -29,9 +29,9 @@ Bij het plotten van de pickup(geoip) in Kibana is duidelijk terug te zien dat er
 De Docker compose file komt van de officiele repo van Elastic. We gebruiken de laatste ELK images van Elastic. 
 
 ### Install pre-requirements
-Windows: Docker Deskstop 
-Ubuntu: apt install docker-ce 
-Mac: Docker desktop 
+* Windows: Docker Deskstop 
+* Ubuntu: apt install docker-ce 
+* Mac: Docker desktop 
 
 ## Dataset
 Download de dataset en plaats deze in logstash/data/
