@@ -26,12 +26,12 @@ bron: https://en.wikipedia.org/wiki/Boro_taxi -->
 Bij het plotten van de pickup(geoip) in Kibana is duidelijk terug te zien dat er op Manhattan zeer weinig pickups zijn onder de bovengenoemde straten. Aan de deelnemers van de workshop kan dan ook gevraagd worden wat ze opvalt aan de visualisatie op de kaart. Tips boven de $100, levert ook leuke resultaten op.
 
 ## Docker
-De Docker compose file komt van de officiele repo van Elastic. We gebruiken de laatste ELK images van de Elastic. 
+De Docker compose file komt van de officiele repo van Elastic. We gebruiken de laatste ELK images van Elastic. 
 
 ### Install pre-requirements
-Windows: Docker Deskstop
-Ubuntu: apt install docker-ce
-Mac: Docker desktop
+Windows: Docker Deskstop 
+Ubuntu: apt install docker-ce 
+Mac: Docker desktop 
 
 ## Dataset
 Download de dataset en plaats deze in logstash/data/
